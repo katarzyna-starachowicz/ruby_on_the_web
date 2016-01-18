@@ -9,9 +9,13 @@ class MicroBlogger
   end
 
   def tweet(message)
-    @client.update(message)
+    if message.length <= 140
+      @client.update(message)
+    else
+      puts "Warning! Your message was longer than 140 characters!"
+    end
   end
 end
 
 blogger = MicroBlogger.new
-blogger.tweet("MicroBlogger Initialized")
+blogger.tweet("Only a few characters.")
